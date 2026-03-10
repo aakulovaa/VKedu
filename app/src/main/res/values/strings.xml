@@ -7,6 +7,10 @@
 
     <string name="btn_call">Позвонить другу</string>
     <string name="error_phone_number">"Номер должен содержать 11 цифр или начинаться с +7"</string>
+    <string name="enter_correct_phone">Введите корректный номер телефона</string>
+
+    <string name="share_using">Поделиться через...</string>
+    <string name="btn_share">Поделиться текстом</string>
 
     <!--    Second Activity-->
     <string name="error_receiving_text">Ошибка получения текста</string>

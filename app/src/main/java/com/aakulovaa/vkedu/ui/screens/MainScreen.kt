@@ -88,26 +88,42 @@ fun MainScreen(
                 onClick = {
                     val phone = text.trim()
                     if (isValidPhone(phone)) {
-
                         val intent = Intent(Intent.ACTION_DIAL).apply {
                             data = Uri.parse("tel:$phone")
                         }
-
                         context.startActivity(intent)
-
                     } else {
                         isPhoneError = true
                         Toast
                             .makeText(
                                 context,
-                                "Введите корректный номер телефона",
+                                context.getString(R.string.enter_correct_phone),
                                 Toast.LENGTH_SHORT
                             )
                             .show()
                     }
-                }
+                },
+                enabled = text.isNotBlank()
             ) {
                 Text(stringResource(R.string.btn_call))
+            }
+
+            Spacer(modifier = Modifier.height(16.dp))
+
+            Button(
+                onClick = {
+                    if (text.isNotBlank()) {
+                        val intent = Intent(Intent.ACTION_SEND).apply {
+                            type = "text/plain"
+                            putExtra(Intent.EXTRA_TEXT, text)
+                        }
+                        val chooser = Intent.createChooser(intent, context.getString(R.string.share_using))
+                        context.startActivity(chooser)
+                    }
+                },
+                enabled = text.isNotBlank()
+            ) {
+                Text(stringResource(R.string.btn_share))
             }
         }
     }
