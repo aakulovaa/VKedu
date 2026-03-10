@@ -1,3 +1,21 @@
 <resources>
     <string name="app_name">VKedu</string>
+
+<!--    First Activity-->
+    <string name="input_text">Введите текст</string>
+    <string name="btn_open_second_activity">Открыть вторую Activity</string>
+
+    <string name="btn_call">Позвонить другу</string>
+    <string name="error_phone_number">"Номер должен содержать 11 цифр или начинаться с +7"</string>
+    <string name="enter_correct_phone">Введите корректный номер телефона</string>
+
+    <string name="share_using">Поделиться через...</string>
+    <string name="btn_share">Поделиться текстом</string>
+
+    <!--    Second Activity-->
+    <string name="error_receiving_text">Ошибка получения текста</string>
+    <string name="header_sec_activity">Вторая Activity</string>
+    <string name="btn_back">Назад</string>
+    <string name="received_text">Полученный текст:</string>
+
 </resources>

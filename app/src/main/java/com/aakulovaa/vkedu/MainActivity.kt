@@ -1,16 +1,11 @@
 package com.aakulovaa.vkedu
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import com.aakulovaa.vkedu.ui.screens.MainScreen
 import com.aakulovaa.vkedu.ui.theme.VKeduTheme
 
 class MainActivity : ComponentActivity() {
@@ -19,29 +14,14 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             VKeduTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "VK",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
+                MainScreen(
+                    openSecondActivity = { text ->
+                        val intent = Intent(this, SecondActivity::class.java)
+                        intent.putExtra("EXTRA_TEXT", text)
+                        startActivity(intent)
+                    }
+                )
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    VKeduTheme {
-        Greeting("Android")
     }
 }
