@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">VKedu</string>
+
+<!--    First Activity-->
+    <string name="input_text">Введите текст</string>
+    <string name="btn_open_second_activity">Открыть вторую Activity</string>
+
+    <string name="error_receiving_text">Ошибка получения текста</string>
+    <string name="header_sec_activity">Вторая Activity</string>
+    <string name="btn_back">Назад</string>
+    <string name="received_text">Полученный текст:</string>
+
 </resources>
