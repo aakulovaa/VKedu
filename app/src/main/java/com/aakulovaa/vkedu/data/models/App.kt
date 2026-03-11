@@ -2,6 +2,7 @@ package com.aakulovaa.vkedu.data.models
 
 data class App(
     val title: String,
+    val developer: String,
     val description: String,
     val category: Category,
     val iconUrl: String,
