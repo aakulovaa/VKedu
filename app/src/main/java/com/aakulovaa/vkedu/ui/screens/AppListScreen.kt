@@ -2,75 +2,29 @@ package com.aakulovaa.vkedu.ui.screens
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Icon
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
-import com.aakulovaa.vkedu.R
 import com.aakulovaa.vkedu.data.models.App
 import com.aakulovaa.vkedu.data.models.Category
 import com.aakulovaa.vkedu.presentation.components.AppCard
+import com.aakulovaa.vkedu.presentation.components.AppListScreenHeader
 import com.aakulovaa.vkedu.ui.theme.Blue
 import com.aakulovaa.vkedu.ui.theme.VKeduTheme
-import com.aakulovaa.vkedu.ui.theme.White
 
 
 @Composable
 fun AppListScreen(apps: List<App>){
     Column (modifier = Modifier.fillMaxSize().background(Blue)){
 
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .background(Blue)
-                .padding(horizontal = 16.dp)
-                .padding(top = 80.dp, bottom = 32.dp),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-
-            Icon(
-                painter = painterResource(R.drawable.rustore),
-                contentDescription = null,
-                tint = Color.Unspecified,
-                modifier = Modifier.size(32.dp)
-            )
-
-            Spacer(modifier = Modifier.width(8.dp))
-
-            Text(
-                text = "RuStore",
-                color = White,
-                fontSize = 24.sp,
-                fontWeight = FontWeight.Bold
-            )
-
-            Spacer(modifier = Modifier.weight(1f))
-
-            Icon(
-                painter = painterResource(R.drawable.grid),
-                contentDescription = null,
-                modifier = Modifier.size(32.dp),
-                tint = Color.White
-            )
-        }
+        AppListScreenHeader()
 
         Surface(
             modifier = Modifier.fillMaxSize(),
