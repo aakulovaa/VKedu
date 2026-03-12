@@ -1,5 +1,6 @@
 package com.aakulovaa.vkedu.presentation.components
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -21,10 +22,12 @@ import coil.compose.AsyncImage
 import com.aakulovaa.vkedu.data.models.App
 
 @Composable
-fun AppCard(appItem: App){
+fun AppCard(appItem: App, onClick: () -> Unit){
+
     Row(
         modifier = Modifier
             .fillMaxWidth()
+            .clickable { onClick() }
             .padding(16.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
