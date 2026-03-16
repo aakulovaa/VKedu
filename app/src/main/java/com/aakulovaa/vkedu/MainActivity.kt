@@ -29,12 +29,12 @@ class MainActivity : ComponentActivity() {
 fun NavGraph(){
     val navController = rememberNavController()
 
-    NavHost(navController = navController, startDestination = "app_list") {
-        composable("app_list") {
-            AppListScreen(apps = apps, navController = navController)
+    NavHost(navController = navController, startDestination = Routes.APP_LIST) {
+        composable(Routes.APP_LIST) {
+            AppListScreen(apps = apps.map { it.toListItem() }, navController = navController)
         }
 
-        composable("app_details/{appTitle}") { backStackEntry ->
+        composable("${Routes.APP_DETAILS}/{appTitle}") { backStackEntry ->
             val appTitle = backStackEntry.arguments?.getString("appTitle")
             val app = apps.find { it.title == appTitle }
             if (app != null) {

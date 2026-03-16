@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">VKedu</string>
+    <string name="app_logo">RuStore</string>
     <string name="app_details_developer">Разработчик</string>
     <string name="under_developement">В процессе разработки</string>
     <string name="app_details_age">Возраст</string>

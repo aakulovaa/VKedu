@@ -8,25 +8,25 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.aakulovaa.vkedu.R
-import com.aakulovaa.vkedu.ui.theme.Blue
-import com.aakulovaa.vkedu.ui.theme.White
 
 @Composable
 fun AppListScreenHeader(){
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .background(Blue)
+                .background(MaterialTheme.colorScheme.primary)
             .padding(horizontal = 16.dp)
             .padding(top = 80.dp, bottom = 32.dp),
         verticalAlignment = Alignment.CenterVertically
@@ -42,8 +42,8 @@ fun AppListScreenHeader(){
         Spacer(modifier = Modifier.width(8.dp))
 
         Text(
-            text = "RuStore",
-            color = White,
+            text = stringResource(R.string.app_logo),
+            color = MaterialTheme.colorScheme.onPrimary,
             fontSize = 24.sp,
             fontWeight = FontWeight.Bold
         )
@@ -54,7 +54,7 @@ fun AppListScreenHeader(){
             painter = painterResource(R.drawable.grid),
             contentDescription = null,
             modifier = Modifier.size(32.dp),
-            tint = Color.White
+            tint = MaterialTheme.colorScheme.onPrimary
         )
     }
 }

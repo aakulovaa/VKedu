@@ -9,20 +9,20 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
-import com.aakulovaa.vkedu.data.models.App
+import com.aakulovaa.vkedu.data.models.AppListItem
 
 @Composable
-fun AppCard(appItem: App, onClick: () -> Unit){
+fun AppCard(appItem: AppListItem, onClick: () -> Unit){
 
     Row(
         modifier = Modifier
@@ -51,13 +51,13 @@ fun AppCard(appItem: App, onClick: () -> Unit){
 
             Text(
                 text = appItem.description,
-                color = Color.Black,
+                color = MaterialTheme.colorScheme.onSecondary,
                 fontSize = 14.sp
             )
 
             Text(
                 text = appItem.category.title,
-                color = Color.Gray,
+                color = MaterialTheme.colorScheme.secondary,
                 fontSize = 12.sp
             )
         }
