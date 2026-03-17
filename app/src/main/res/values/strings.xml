@@ -13,4 +13,6 @@
     <string name="error_loading_app_details">Ошибка загрузки элемента списка!</string>
     <string name="error_get_app_details">Ошибка получения элемента списка!</string>
     <string name="error_loading_app_list">Ошибка загрузки списка приложений!</string>
+
+    <string name="snack_message">Привет от RuStore!</string>
 </resources>

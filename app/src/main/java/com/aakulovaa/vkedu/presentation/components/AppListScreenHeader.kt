@@ -1,6 +1,7 @@
 package com.aakulovaa.vkedu.presentation.components
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -22,13 +23,13 @@ import androidx.compose.ui.unit.sp
 import com.aakulovaa.vkedu.R
 
 @Composable
-fun AppListScreenHeader(){
+fun AppListScreenHeader(onLogoClick: ()-> Unit){
     Row(
         modifier = Modifier
             .fillMaxWidth()
                 .background(MaterialTheme.colorScheme.primary)
             .padding(horizontal = 16.dp)
-            .padding(top = 80.dp, bottom = 32.dp),
+            .padding(top = 40.dp, bottom = 24.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
 
@@ -37,6 +38,7 @@ fun AppListScreenHeader(){
             contentDescription = null,
             tint = Color.Unspecified,
             modifier = Modifier.size(32.dp)
+                .clickable{onLogoClick()}
         )
 
         Spacer(modifier = Modifier.width(8.dp))

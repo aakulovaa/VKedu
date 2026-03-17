@@ -1,19 +1,38 @@
 package com.aakulovaa.vkedu.presentation.components.viewModel
 
-import androidx.lifecycle.ViewModel
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
+import com.aakulovaa.vkedu.R
 import com.aakulovaa.vkedu.data.models.AppListItem
 import com.aakulovaa.vkedu.data.models.Category
 import com.aakulovaa.vkedu.presentation.components.state.AppListState
+import com.aakulovaa.vkedu.presentation.components.state.SnackState
+import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 
-class AppListViewModel: ViewModel() {
+class AppListViewModel(application: Application): AndroidViewModel(application) {
     private val _state: MutableStateFlow<AppListState> = MutableStateFlow(AppListState.Loading)
     val state: StateFlow<AppListState> = _state.asStateFlow()
+
+    private val _snack = Channel<SnackState>(
+        Channel.BUFFERED
+    )
+    val snack = _snack.receiveAsFlow()
+
+    fun onLogoClick(){
+        val message = getApplication<Application>().getString(R.string.snack_message)
+        viewModelScope.launch {
+            _snack.send(
+                SnackState.ShowSnackbar(message)
+            )
+        }
+    }
 
     init {
         loadAppList()

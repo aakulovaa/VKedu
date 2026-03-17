@@ -46,6 +46,7 @@ fun AppCard(appItem: AppListItem, onClick: () -> Unit){
             Text(
                 text = appItem.title,
                 fontWeight = FontWeight.SemiBold,
+                color = MaterialTheme.colorScheme.onSecondary,
                 fontSize = 16.sp
             )
 
