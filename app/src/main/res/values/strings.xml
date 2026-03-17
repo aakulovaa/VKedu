@@ -9,4 +9,8 @@
     <string name="app_details_description">Описание приложения</string>
     <string name="app_details_read_more">Читать подробнее</string>
     <string name="app_details_screenshots">Скриншоты</string>
+
+    <string name="error_loading_app_details">Ошибка загрузки элемента списка!</string>
+    <string name="error_get_app_details">Ошибка получения элемента списка!</string>
+    <string name="error_loading_app_list">Ошибка загрузки списка приложений!</string>
 </resources>
