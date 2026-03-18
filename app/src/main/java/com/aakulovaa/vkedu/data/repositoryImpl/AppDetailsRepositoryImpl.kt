@@ -1,7 +1,9 @@
-package com.aakulovaa.vkedu.data
+package com.aakulovaa.vkedu.data.repositoryImpl
 
-import com.aakulovaa.vkedu.domain.AppDetails
-import com.aakulovaa.vkedu.domain.AppDetailsRepository
+import com.aakulovaa.vkedu.data.api.AppDetailsApi
+import com.aakulovaa.vkedu.data.mappers.AppDetailsMapper
+import com.aakulovaa.vkedu.domain.model.AppDetails
+import com.aakulovaa.vkedu.domain.repository.AppDetailsRepository
 
 class AppDetailsRepositoryImpl(
     private val mapper: AppDetailsMapper,

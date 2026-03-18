@@ -1,4 +1,4 @@
-package com.aakulovaa.vkedu.domain
+package com.aakulovaa.vkedu.domain.model
 
 enum class Category(val title: String) {
     TOOLS("Инструменты"),

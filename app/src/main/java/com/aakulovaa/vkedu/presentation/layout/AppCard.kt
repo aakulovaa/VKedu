@@ -19,7 +19,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
-import com.aakulovaa.vkedu.domain.AppListItem
+import com.aakulovaa.vkedu.domain.model.AppListItem
 
 @Composable
 fun AppCard(appItem: AppListItem, onClick: () -> Unit){

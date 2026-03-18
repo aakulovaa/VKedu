@@ -2,7 +2,7 @@ package com.aakulovaa.vkedu.presentation.viewModel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.aakulovaa.vkedu.domain.GetAppDetailsUseCase
+import com.aakulovaa.vkedu.domain.useCase.GetAppDetailsUseCase
 
 @Suppress("UNCHECKED_CAST")
 class AppDetailsViewModelFactory(

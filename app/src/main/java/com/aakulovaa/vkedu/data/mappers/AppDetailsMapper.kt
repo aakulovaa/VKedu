@@ -1,6 +1,7 @@
-package com.aakulovaa.vkedu.data
+package com.aakulovaa.vkedu.data.mappers
 
-import com.aakulovaa.vkedu.domain.AppDetails
+import com.aakulovaa.vkedu.data.dto.AppDetailsDto
+import com.aakulovaa.vkedu.domain.model.AppDetails
 
 class AppDetailsMapper(
     private val categoryMapper: CategoryMapper

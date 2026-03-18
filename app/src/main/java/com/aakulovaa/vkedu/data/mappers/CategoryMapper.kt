@@ -1,6 +1,6 @@
-package com.aakulovaa.vkedu.data
+package com.aakulovaa.vkedu.data.mappers
 
-import com.aakulovaa.vkedu.domain.Category
+import com.aakulovaa.vkedu.domain.model.Category
 
 class CategoryMapper {
     fun toDomain(category: String): Category = when(category){

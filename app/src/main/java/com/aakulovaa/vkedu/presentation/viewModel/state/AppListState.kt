@@ -1,6 +1,6 @@
 package com.aakulovaa.vkedu.presentation.viewModel.state
 
-import com.aakulovaa.vkedu.domain.AppListItem
+import com.aakulovaa.vkedu.domain.model.AppListItem
 
 sealed interface AppListState {
     data object Loading: AppListState

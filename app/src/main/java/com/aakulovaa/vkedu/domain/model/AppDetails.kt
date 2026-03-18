@@ -1,4 +1,4 @@
-package com.aakulovaa.vkedu.domain
+package com.aakulovaa.vkedu.domain.model
 
 data class AppDetails(
     val id: String,

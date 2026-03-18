@@ -1,9 +1,10 @@
-package com.aakulovaa.vkedu.data
+package com.aakulovaa.vkedu.data.api
 
+import com.aakulovaa.vkedu.data.dto.AppDetailsDto
 import kotlinx.coroutines.delay
 
 class AppDetailsApi {
-    suspend fun getAppDetails(id: String): AppDetailsDto{
+    suspend fun getAppDetails(id: String): AppDetailsDto {
         delay(2000L)
         return appDetailsData.first{ it.id == id}
     }

@@ -1,4 +1,4 @@
-package com.aakulovaa.vkedu.data
+package com.aakulovaa.vkedu.data.dto
 
 data class AppDetailsDto(
     val id: String,
