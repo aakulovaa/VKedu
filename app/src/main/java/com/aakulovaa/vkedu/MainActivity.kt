@@ -8,9 +8,9 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.aakulovaa.vkedu.ui.screens.AppDetailsScreen
-import com.aakulovaa.vkedu.ui.screens.AppListScreen
-import com.aakulovaa.vkedu.ui.theme.VKeduTheme
+import com.aakulovaa.vkedu.presentation.layout.screens.AppDetailsScreen
+import com.aakulovaa.vkedu.presentation.layout.screens.AppListScreen
+import com.aakulovaa.vkedu.theme.VKeduTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,9 +33,9 @@ fun NavGraph(){
             AppListScreen(navController = navController)
         }
 
-        composable("${Routes.APP_DETAILS}/{appTitle}") { backStackEntry ->
-            val appTitle = backStackEntry.arguments?.getString("appTitle") ?: ""
-            AppDetailsScreen(title = appTitle, navController = navController)
+        composable("${Routes.APP_DETAILS}/{idAppDetails}") { backStackEntry ->
+            val idAppDetails = backStackEntry.arguments?.getString("idAppDetails")
+            AppDetailsScreen(idAppDetails = idAppDetails!!, navController = navController)
 
         }
     }
