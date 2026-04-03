@@ -7,14 +7,17 @@ import com.aakulovaa.vkedu.R
 import com.aakulovaa.vkedu.domain.useCase.GetAppListUseCase
 import com.aakulovaa.vkedu.presentation.viewModel.state.AppListState
 import com.aakulovaa.vkedu.presentation.viewModel.state.SnackState
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class AppListViewModel(
+@HiltViewModel
+class AppListViewModel @Inject constructor(
     private val getAppListUseCase: GetAppListUseCase,
     application: Application
 ): AndroidViewModel(application) {

@@ -1,4 +1,4 @@
-package com.aakulovaa.vkedu
+package com.aakulovaa.vkedu.presentation
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -8,10 +8,13 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.aakulovaa.vkedu.Routes
 import com.aakulovaa.vkedu.presentation.layout.screens.AppDetailsScreen
 import com.aakulovaa.vkedu.presentation.layout.screens.AppListScreen
 import com.aakulovaa.vkedu.theme.VKeduTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

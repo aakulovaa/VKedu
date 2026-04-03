@@ -1,6 +1,5 @@
 package com.aakulovaa.vkedu.presentation.layout.screens
 
-import android.app.Application
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -22,26 +21,19 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.aakulovaa.vkedu.R
 import com.aakulovaa.vkedu.Routes
-import com.aakulovaa.vkedu.data.api.AppListApi
-import com.aakulovaa.vkedu.data.mappers.AppListMapper
-import com.aakulovaa.vkedu.data.mappers.CategoryMapper
-import com.aakulovaa.vkedu.data.repositoryImpl.AppListRepositoryImpl
 import com.aakulovaa.vkedu.domain.model.AppListItem
-import com.aakulovaa.vkedu.domain.useCase.GetAppListUseCase
 import com.aakulovaa.vkedu.presentation.layout.AppCard
 import com.aakulovaa.vkedu.presentation.layout.AppListScreenHeader
 import com.aakulovaa.vkedu.presentation.viewModel.AppListViewModel
-import com.aakulovaa.vkedu.presentation.viewModel.AppListViewModelFactory
 import com.aakulovaa.vkedu.presentation.viewModel.state.AppListState
 import com.aakulovaa.vkedu.presentation.viewModel.state.SnackState
 import com.aakulovaa.vkedu.theme.VKeduTheme
@@ -49,17 +41,8 @@ import com.aakulovaa.vkedu.theme.VKeduTheme
 
 @Composable
 fun AppListScreen(navController: NavController){
-    val appListApi = remember { AppListApi() }
-    val categoryMapper = remember { CategoryMapper() }
-    val appListMapper = remember { AppListMapper(categoryMapper) }
-    val appListRepositoryImpl = remember { AppListRepositoryImpl(appListMapper,appListApi) }
-    val appListUseCase = remember { GetAppListUseCase(appListRepositoryImpl) }
+    val viewModel: AppListViewModel = hiltViewModel()
 
-    val context = LocalContext.current.applicationContext as Application
-
-    val viewModel: AppListViewModel = viewModel(
-        factory = AppListViewModelFactory(appListUseCase, context)
-    )
     val state by viewModel.state.collectAsStateWithLifecycle()
     val snackbarState = remember { SnackbarHostState() }
 
