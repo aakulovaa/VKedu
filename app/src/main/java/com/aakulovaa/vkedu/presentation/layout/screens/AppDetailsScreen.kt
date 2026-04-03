@@ -23,16 +23,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.aakulovaa.vkedu.R
-import com.aakulovaa.vkedu.data.api.AppDetailsApi
-import com.aakulovaa.vkedu.data.mappers.AppDetailsMapper
-import com.aakulovaa.vkedu.data.mappers.CategoryMapper
-import com.aakulovaa.vkedu.data.repositoryImpl.AppDetailsRepositoryImpl
 import com.aakulovaa.vkedu.domain.model.AppDetails
-import com.aakulovaa.vkedu.domain.useCase.GetAppDetailsUseCase
 import com.aakulovaa.vkedu.presentation.layout.detailScreen.AppDescription
 import com.aakulovaa.vkedu.presentation.layout.detailScreen.AppDetailsHeader
 import com.aakulovaa.vkedu.presentation.layout.detailScreen.Developer
@@ -40,23 +35,13 @@ import com.aakulovaa.vkedu.presentation.layout.detailScreen.InstallButton
 import com.aakulovaa.vkedu.presentation.layout.detailScreen.ScreenshotsList
 import com.aakulovaa.vkedu.presentation.layout.detailScreen.Toolbar
 import com.aakulovaa.vkedu.presentation.viewModel.AppDetailsViewModel
-import com.aakulovaa.vkedu.presentation.viewModel.AppDetailsViewModelFactory
 import com.aakulovaa.vkedu.presentation.viewModel.state.AppDetailsState
 
 @Composable
-fun AppDetailsScreen(idAppDetails: String,
-                     navController: NavController,
+fun AppDetailsScreen(navController: NavController,
                      modifier: Modifier = Modifier
 ) {
-    val api = remember { AppDetailsApi() }
-    val categoryMapper = remember { CategoryMapper() }
-    val appDetailsMapper = remember { AppDetailsMapper(categoryMapper) }
-    val repository = remember { AppDetailsRepositoryImpl(appDetailsMapper,api) }
-    val useCase = remember { GetAppDetailsUseCase(repository) }
-
-    val viewModel: AppDetailsViewModel = viewModel(
-        factory = AppDetailsViewModelFactory(idAppDetails, useCase)
-    )
+    val viewModel: AppDetailsViewModel = hiltViewModel()
     val state by viewModel.state.collectAsStateWithLifecycle()
 
     when (val currentState = state) {

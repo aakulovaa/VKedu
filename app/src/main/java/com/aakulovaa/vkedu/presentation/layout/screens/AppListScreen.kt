@@ -105,7 +105,7 @@ private fun AppListScreenContent(
                 items(appList) { app ->
                     AppCard(appItem = app,
                         onClick = {
-                            navController.navigate(Routes.appDetails(app.id))
+                            navController.navigate("${Routes.APP_DETAILS}/${app.id}")
                         }
                     )
                 }

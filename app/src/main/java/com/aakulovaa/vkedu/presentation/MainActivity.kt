@@ -36,10 +36,9 @@ fun NavGraph(){
             AppListScreen(navController = navController)
         }
 
-        composable("${Routes.APP_DETAILS}/{idAppDetails}") { backStackEntry ->
-            val idAppDetails = backStackEntry.arguments?.getString("idAppDetails")
-            AppDetailsScreen(idAppDetails = idAppDetails!!, navController = navController)
-
+        composable("${Routes.APP_DETAILS}/{idAppDetails}")
+        {
+            AppDetailsScreen(navController = navController)
         }
     }
 }
