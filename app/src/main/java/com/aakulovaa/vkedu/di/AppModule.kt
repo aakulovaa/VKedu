@@ -17,22 +17,10 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
+
 @Module
 @InstallIn(SingletonComponent::class)
 object AppModule {
-
-    @Provides
-    @Singleton
-    fun provideAppListApi(): AppListApi {
-        return AppListApi()
-    }
-
-    @Provides
-    @Singleton
-    fun provideAppDetailsApi(): AppDetailsApi {
-        return AppDetailsApi()
-    }
-
     @Provides
     @Singleton
     fun provideCategoryMapper(): CategoryMapper {
