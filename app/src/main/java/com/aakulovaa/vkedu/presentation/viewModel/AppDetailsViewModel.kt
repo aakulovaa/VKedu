@@ -23,10 +23,12 @@ class AppDetailsViewModel @Inject constructor(
     val state: StateFlow<AppDetailsState> = _state.asStateFlow()
 
     init {
-        loadAppDetails()
+        viewModelScope.launch {
+            loadAppDetails()
+        }
     }
 
-    fun loadAppDetails(){
+     private suspend fun loadAppDetails(){
         viewModelScope.launch {
             runCatching {
                 _state.value = AppDetailsState.Loading

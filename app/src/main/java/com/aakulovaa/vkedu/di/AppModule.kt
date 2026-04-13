@@ -1,7 +1,12 @@
 package com.aakulovaa.vkedu.di
 
+import android.app.Application
+import androidx.room.Room
 import com.aakulovaa.vkedu.data.api.AppDetailsApi
 import com.aakulovaa.vkedu.data.api.AppListApi
+import com.aakulovaa.vkedu.data.local.AppDatabase
+import com.aakulovaa.vkedu.data.local.AppDetailsDao
+import com.aakulovaa.vkedu.data.local.AppDetailsEntityMapper
 import com.aakulovaa.vkedu.data.mappers.AppDetailsMapper
 import com.aakulovaa.vkedu.data.mappers.AppListMapper
 import com.aakulovaa.vkedu.data.mappers.CategoryMapper
@@ -59,6 +64,28 @@ object AppModule {
         return GetAppDetailsUseCase(repository)
     }
 
+    @Provides
+    @Singleton
+    fun provideDatabase(app: Application): AppDatabase {
+        return Room.databaseBuilder(
+            app,
+            AppDatabase::class.java,
+            AppDatabase.DATABASE_NAME
+        ).build()
+    }
+
+    @Provides
+    @Singleton
+    fun provideAppDetailsDao(database: AppDatabase): AppDetailsDao {
+        return database.appDetailsDao()
+    }
+
+    @Provides
+    @Singleton
+    fun provideAppDetailsEntityMapper(): AppDetailsEntityMapper {
+        return AppDetailsEntityMapper()
+    }
+
 
     @Provides
     @Singleton
@@ -73,9 +100,11 @@ object AppModule {
     @Singleton
     fun provideAppDetailsRepository(
         mapper: AppDetailsMapper,
-        api: AppDetailsApi
+        api: AppDetailsApi,
+        dao: AppDetailsDao,
+        entityMapper: AppDetailsEntityMapper
     ): AppDetailsRepository {
-        return AppDetailsRepositoryImpl(mapper, api)
+        return AppDetailsRepositoryImpl(mapper, api, dao, entityMapper)
     }
 
 }
