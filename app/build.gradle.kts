@@ -43,6 +43,9 @@ android {
     hilt {
         enableAggregatingTask = false
     }
+    kapt {
+        arguments {arg("room.schemaLocation", "$projectDir/schemas")}
+    }
 }
 
 dependencies {
