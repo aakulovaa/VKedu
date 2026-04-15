@@ -9,6 +9,9 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -28,15 +31,18 @@ class AppDetailsViewModel @Inject constructor(
         }
     }
 
-     private suspend fun loadAppDetails(){
+     private fun loadAppDetails(){
+         getAppDetailsUseCase.observeAppDetails(idAppDetails)
+             .onEach { appDetails ->
+                 _state.value = AppDetailsState.Content(appDetails)
+             }.catch {
+                 _state.value = AppDetailsState.Error
+             }.launchIn(viewModelScope)
+    }
+
+    fun toggleWishlist(){
         viewModelScope.launch {
-            runCatching {
-                _state.value = AppDetailsState.Loading
-                val appDetail = getAppDetailsUseCase(idAppDetails)
-                _state.value = AppDetailsState.Content(appDetail)
-            }.onFailure {
-                _state.value = AppDetailsState.Error
-            }
+            getAppDetailsUseCase.toggleWishlist(idAppDetails)
         }
     }
 

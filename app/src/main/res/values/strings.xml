@@ -15,4 +15,6 @@
     <string name="error_loading_app_list">Ошибка загрузки списка приложений!</string>
 
     <string name="snack_message">Привет от RuStore!</string>
+    <string name="add_wishlist">Приложение добавлено в список поравившихся</string>
+    <string name="remove_wishlist">Приложение удалено из списока поравившихся</string>
 </resources>

@@ -7,7 +7,10 @@ import com.aakulovaa.vkedu.data.mappers.AppDetailsMapper
 import com.aakulovaa.vkedu.domain.model.AppDetails
 import com.aakulovaa.vkedu.domain.repository.AppDetailsRepository
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
 
 class AppDetailsRepositoryImpl(
@@ -30,6 +33,18 @@ class AppDetailsRepositoryImpl(
             }
             domain
         }
-
     }
+
+    override fun observeAppDetails(id: String): Flow<AppDetails> {
+        return dao.getAppDetails(id)
+            .filterNotNull()
+            .map { entityMapper.toDomain(it) }
+    }
+
+    override suspend fun toggleWishlist(id: String) {
+        val currentEntity = dao.getAppDetails(id).first()
+        currentEntity?.let {
+            dao.updateWishlistStatus(id, !it.isInWishlist)
+            }
+        }
 }

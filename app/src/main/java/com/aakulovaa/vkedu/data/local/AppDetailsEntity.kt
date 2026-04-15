@@ -16,5 +16,6 @@ data class AppDetailsEntity(
     val ageRating: Int,
     val size: Float,
     val screenshots: String? = null,
+    val isInWishlist: Boolean = false,
     val lastUpdated: Long = System.currentTimeMillis()
 )

@@ -11,19 +11,22 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
+import com.aakulovaa.vkedu.R
 import com.aakulovaa.vkedu.theme.VKeduTheme
 
 @Composable
 internal fun Toolbar(
+    isInWishlist: Boolean,
     onBackClick: () -> Unit,
     onShareClick: () -> Unit,
+    onWishlistClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Row(
         horizontalArrangement = Arrangement.SpaceBetween,
-        modifier = modifier
-            .fillMaxWidth()
+        modifier = modifier.fillMaxWidth()
     ) {
         IconButton(onClick = onBackClick) {
             Icon(
@@ -32,12 +35,21 @@ internal fun Toolbar(
                 tint = MaterialTheme.colorScheme.primary,
             )
         }
-        IconButton(onClick = onShareClick) {
-            Icon(
-                imageVector = Icons.Default.Share,
-                contentDescription = null,
-                tint = MaterialTheme.colorScheme.primary,
-            )
+        Row {
+            IconButton(onClick = onWishlistClick) {
+                Icon(
+                    painter = painterResource(R.drawable.like),
+                    contentDescription = null,
+                    tint = if (isInWishlist) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.primary,
+                )
+            }
+            IconButton(onClick = onShareClick) {
+                Icon(
+                    imageVector = Icons.Default.Share,
+                    contentDescription = null,
+                    tint = MaterialTheme.colorScheme.primary,
+                )
+            }
         }
     }
 }
@@ -47,8 +59,10 @@ internal fun Toolbar(
 private fun Preview() {
     VKeduTheme {
         Toolbar(
+            isInWishlist = true,
             onBackClick = {},
             onShareClick = {},
+            onWishlistClick = {}
         )
     }
 }
