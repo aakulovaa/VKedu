@@ -12,7 +12,7 @@ class AppDetailsEntityMapper {
         iconUrl = domain.iconUrl,
         ageRating = domain.ageRating,
         size = domain.size,
-        screenshots = null,
+        screenshots = domain.screenshotUrlList.joinToString("|"),
         isInWishlist = domain.isInWishlist
     )
 
@@ -25,7 +25,7 @@ class AppDetailsEntityMapper {
         iconUrl = entity.iconUrl,
         ageRating = entity.ageRating,
         size = entity.size,
-        screenshotUrlList = emptyList(),
+        screenshotUrlList = entity.screenshots ?.takeIf { it.isNotBlank() }?.split('|') ?: emptyList(),
         isInWishlist = entity.isInWishlist
     )
 }

@@ -28,22 +28,35 @@ class AppDetailsViewModel @Inject constructor(
     init {
         viewModelScope.launch {
             loadAppDetails()
+            observeAppDetails()
         }
     }
 
      private fun loadAppDetails(){
-         getAppDetailsUseCase.observeAppDetails(idAppDetails)
-             .onEach { appDetails ->
-                 _state.value = AppDetailsState.Content(appDetails)
-             }.catch {
+         viewModelScope.launch {
+             runCatching {
+                 getAppDetailsUseCase(idAppDetails)
+             }.onFailure {
                  _state.value = AppDetailsState.Error
-             }.launchIn(viewModelScope)
+             }
+         }
     }
 
     fun toggleWishlist(){
         viewModelScope.launch {
             getAppDetailsUseCase.toggleWishlist(idAppDetails)
         }
+    }
+
+    private fun observeAppDetails() {
+        getAppDetailsUseCase.observeAppDetails(idAppDetails)
+            .onEach { appDetails ->
+                _state.value = AppDetailsState.Content(appDetails)
+            }
+            .catch {
+                _state.value = AppDetailsState.Error
+            }
+            .launchIn(viewModelScope)
     }
 
 }
