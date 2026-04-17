@@ -1,6 +1,5 @@
 package com.aakulovaa.vkedu.mappersUnitTests
 
-import com.aakulovaa.vkedu.data.dto.AppDetailsDto
 import com.aakulovaa.vkedu.data.local.AppDetailsEntity
 import com.aakulovaa.vkedu.data.local.AppDetailsEntityMapper
 import com.aakulovaa.vkedu.domain.model.AppDetails
