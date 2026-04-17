@@ -1,4 +1,4 @@
-package com.aakulovaa.vkedu
+package com.aakulovaa.vkedu.repositoryImplUnitTests
 
 import com.aakulovaa.vkedu.data.api.AppListApi
 import com.aakulovaa.vkedu.data.dto.AppListItemDto
@@ -6,18 +6,18 @@ import com.aakulovaa.vkedu.data.mappers.AppListMapper
 import com.aakulovaa.vkedu.data.repositoryImpl.AppListRepositoryImpl
 import com.aakulovaa.vkedu.domain.model.AppListItem
 import com.aakulovaa.vkedu.domain.model.Category
-import junit.framework.TestCase.assertTrue
+import junit.framework.TestCase
 import kotlinx.coroutines.test.runTest
 import org.junit.Before
-import org.mockito.Mockito.mock
+import org.mockito.Mockito
 import org.mockito.kotlin.verify
 import org.mockito.kotlin.whenever
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
 class AppListRepositoryImplUnitTest {
-    private val mapper = mock<AppListMapper>()
-    private val api = mock<AppListApi>()
+    private val mapper = Mockito.mock<AppListMapper>()
+    private val api = Mockito.mock<AppListApi>()
 
     private lateinit var repository: AppListRepositoryImpl
 
@@ -67,7 +67,7 @@ class AppListRepositoryImplUnitTest {
 
         val result = repository.getAppList()
 
-        assertTrue(result.isEmpty())
+        TestCase.assertTrue(result.isEmpty())
     }
 
 }

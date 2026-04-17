@@ -1,4 +1,4 @@
-package com.aakulovaa.vkedu
+package com.aakulovaa.vkedu.repositoryImplUnitTests
 
 import com.aakulovaa.vkedu.data.api.AppDetailsApi
 import com.aakulovaa.vkedu.data.dto.AppDetailsDto
@@ -13,8 +13,7 @@ import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.test.runTest
 import org.junit.Before
 import org.junit.Test
-import org.mockito.Mockito.mock
-import org.mockito.Mockito.never
+import org.mockito.Mockito
 import org.mockito.kotlin.any
 import org.mockito.kotlin.verify
 import org.mockito.kotlin.whenever
@@ -22,10 +21,10 @@ import kotlin.test.assertEquals
 
 class AppDetailsRepositoryImplUnitTest {
 
-    private val mapper = mock<AppDetailsMapper>()
-    private val api = mock<AppDetailsApi>()
-    private val dao = mock<AppDetailsDao>()
-    private val entityMapper = mock<AppDetailsEntityMapper>()
+    private val mapper = Mockito.mock<AppDetailsMapper>()
+    private val api = Mockito.mock<AppDetailsApi>()
+    private val dao = Mockito.mock<AppDetailsDao>()
+    private val entityMapper = Mockito.mock<AppDetailsEntityMapper>()
 
     private lateinit var repository: AppDetailsRepositoryImpl
 
@@ -85,7 +84,7 @@ class AppDetailsRepositoryImplUnitTest {
         val result = repository.getAppDetails("1")
 
         assertEquals(domain, result)
-        verify(api, never()).getAppDetails(any())
+        verify(api, Mockito.never()).getAppDetails(any())
     }
 
     @Test
@@ -114,7 +113,7 @@ class AppDetailsRepositoryImplUnitTest {
     }
 
     @Test
-    fun `update wishlist when toggle called`() = runTest{
+    fun `update wishlist when toggle called`() = runTest {
         whenever(dao.getAppDetails("1")).thenReturn(flowOf(entity.copy(isInWishlist = false)))
 
         repository.toggleWishlist("1")
