@@ -1,4 +1,4 @@
-package com.aakulovaa.vkedu.ui.theme
+package com.aakulovaa.vkedu.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

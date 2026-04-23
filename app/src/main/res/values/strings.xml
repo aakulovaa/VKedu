@@ -1,3 +1,20 @@
 <resources>
     <string name="app_name">VKedu</string>
+    <string name="app_logo">RuStore</string>
+    <string name="app_details_developer">Разработчик</string>
+    <string name="under_developement">В процессе разработки</string>
+    <string name="app_details_age">Возраст</string>
+    <string name="app_details_size">Размер</string>
+    <string name="install">Установить</string>
+    <string name="app_details_description">Описание приложения</string>
+    <string name="app_details_read_more">Читать подробнее</string>
+    <string name="app_details_screenshots">Скриншоты</string>
+
+    <string name="error_loading_app_details">Ошибка загрузки элемента списка!</string>
+    <string name="error_get_app_details">Ошибка получения элемента списка!</string>
+    <string name="error_loading_app_list">Ошибка загрузки списка приложений!</string>
+
+    <string name="snack_message">Привет от RuStore!</string>
+    <string name="add_wishlist">Приложение добавлено в список поравившихся</string>
+    <string name="remove_wishlist">Приложение удалено из списока поравившихся</string>
 </resources>

@@ -1,0 +1,68 @@
+package com.aakulovaa.vkedu.presentation.layout.detailScreen
+
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.Share
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
+import com.aakulovaa.vkedu.R
+import com.aakulovaa.vkedu.theme.VKeduTheme
+
+@Composable
+internal fun Toolbar(
+    isInWishlist: Boolean,
+    onBackClick: () -> Unit,
+    onShareClick: () -> Unit,
+    onWishlistClick: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    Row(
+        horizontalArrangement = Arrangement.SpaceBetween,
+        modifier = modifier.fillMaxWidth()
+    ) {
+        IconButton(onClick = onBackClick) {
+            Icon(
+                imageVector = Icons.AutoMirrored.Default.ArrowBack,
+                contentDescription = null,
+                tint = MaterialTheme.colorScheme.primary,
+            )
+        }
+        Row {
+            IconButton(onClick = onWishlistClick) {
+                Icon(
+                    painter = painterResource(R.drawable.like),
+                    contentDescription = null,
+                    tint = if (isInWishlist) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.primary,
+                )
+            }
+            IconButton(onClick = onShareClick) {
+                Icon(
+                    imageVector = Icons.Default.Share,
+                    contentDescription = null,
+                    tint = MaterialTheme.colorScheme.primary,
+                )
+            }
+        }
+    }
+}
+
+@Preview
+@Composable
+private fun Preview() {
+    VKeduTheme {
+        Toolbar(
+            isInWishlist = true,
+            onBackClick = {},
+            onShareClick = {},
+            onWishlistClick = {}
+        )
+    }
+}
